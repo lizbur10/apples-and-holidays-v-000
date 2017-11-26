@@ -22,6 +22,22 @@ def second_supply_for_fourth_of_july(holiday_hash)
 
 end
 
+holiday_supplies = {
+  :winter => {
+    :christmas => ["Lights", "Wreath"],
+    :new_years => ["Party Hats"]
+  },
+  :summer => {
+    :fourth_of_july => ["Fireworks", "BBQ"]
+  },
+  :fall => {
+    :thanksgiving => ["Turkey"]
+  },
+  :spring => {
+    :memorial_day => ["BBQ"]
+  }
+}
+
 def add_supply_to_winter_holidays(holiday_hash, supply)
   # holiday_hash is identical to the one above
   # add the second argument, which is a supply, to BOTH the
@@ -65,10 +81,14 @@ def all_holidays_with_bbq(holiday_hash)
   # return an array of holiday names (as symbols) where supply lists
   # include the string "BBQ"
   holiday_list = []
-  holiday_supplies.each do | holiday, supplies |
-    if supplies.include?("BBQ")
-      holiday_list << holiday
+  holiday_supplies.each do | season, holidays_hash |
+    holidays_hash.each do | holiday, supplies |
+      if supplies.include?("BBQ")
+        holiday_list << holiday
+      end
     end
   end
   holiday_list
 end
+
+#all_holidays_with_bbq(holiday_list)
